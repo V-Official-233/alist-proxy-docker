@@ -9,7 +9,7 @@
 # Docker
 ## Docker-cli
 ```
-docker run -d --restart=unless-stopped --net=host -e ADDRESS='<alist地址>' -e TOKEN='<token>' -p 5243:5243 --name="alist-proxy" reth01/alist-proxy:latest
+docker run -d --restart=unless-stopped --net=host -e ADDRESS='<alist地址>' -e TOKEN='<token>' -e PORT='<port>' --name="alist-proxy" reth01/alist-proxy:latest
 ```
 
 ## Docker-compose
@@ -19,11 +19,10 @@ services:
     alist-proxy:
         image: 'reth01/alist-proxy:latest'
         container_name: alist-proxy
-        ports:
-            - '5243:5243'
         environment:
             - ADDRESS=https://alist.xxx.com
-            - TOKEN=token      
+            - TOKEN=token     
+            - PORT=5243 
         restart: unless-stopped
         network_mode: "host"
 ```
